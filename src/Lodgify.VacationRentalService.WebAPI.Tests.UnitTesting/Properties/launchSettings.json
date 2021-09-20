@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "Lodgify.VacationRentalService.WebAPI.Tests.Integration": {
+      "commandName": "Project"
+    }
+  }
+}

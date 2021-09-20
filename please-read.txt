@@ -1,0 +1,5 @@
+I wish I had more time do more test cases, specially Unit testing.
+I also thought about creating a separated domain service just to handle the avalability of the bookings, but again, I did what I could in the time I had.
+
+I completely changed the README file, please read it to see how to deploy the project. Nevertheless, I noticed a typo in the original README file so I wanted to let you know.
+On the first line of the original file it says "How we'd like to recieve the soluion?". It should be "solution" instead of "soluion", I thought that you might like to fix it.
