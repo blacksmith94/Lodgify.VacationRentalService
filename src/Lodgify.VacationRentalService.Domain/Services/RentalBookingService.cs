@@ -41,6 +41,7 @@ namespace Lodgify.VacationRentalService.Domain.Services
 
 			if (newRental.Units < rentalToUpdate.Units)
 			{
+				//Loop through all the units that would be removed
 				for (int unit = newRental.Units + 1; unit <= rentalToUpdate.Units; unit++)
 				{
 					if (bookingService.IsBookedByRentalUnitAndDate(rentalToUpdate.Id, unit, DateTime.Now.Date))
@@ -68,7 +69,6 @@ namespace Lodgify.VacationRentalService.Domain.Services
 				bookingService.UpdatePreparationTimes(preparationTimes, newRental.PreparationTimeInDays);
 			}
 
-			newRental.Id = newRental.Id;
 			rentalService.Update(newRental);
 			return newRental;
 		}
