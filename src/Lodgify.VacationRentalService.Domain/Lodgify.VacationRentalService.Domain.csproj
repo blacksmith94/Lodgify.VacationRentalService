@@ -5,8 +5,4 @@
     <Configurations>Debug;Release</Configurations>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Lodgify.VacationRentalService.Configurations\Lodgify.VacationRentalService.Configurations.csproj" />
-  </ItemGroup>
-
 </Project>

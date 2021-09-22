@@ -56,19 +56,19 @@ namespace Lodgify.VacationRentalService.WebAPI.Tests.Integration
 			ResourceIdDTO postResult = await _request.Post<RentalRequestDTO, ResourceIdDTO>("rentals", rentalRequest);
 
 
-			//Add booking 1
+			//Add a booking
 			var bookingRequest = new BookingRequestDTO
 			{
 				RentalId = postResult.Id,
 				Nights = 1,
-				Start = new DateTime(2021, 9, 20)
+				Start = DateTime.Now.Date
 			};
 			var postResponse = await _request.Post("bookings", bookingRequest);
 			Assert.True(postResponse.IsSuccessStatusCode);
 
 
-			//Add booking 2
-			bookingRequest.Start = new DateTime(2021, 9, 22);
+			//Add another booking two days after
+			bookingRequest.Start = bookingRequest.Start.Date.AddDays(2);
 			postResponse = await _request.Post("bookings", bookingRequest);
 			Assert.True(postResponse.IsSuccessStatusCode);
 

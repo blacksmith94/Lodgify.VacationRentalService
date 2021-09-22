@@ -24,10 +24,5 @@
   <ItemGroup>
     <ProjectReference Include="..\Lodgify.VacationRentalService.WebAPI\Lodgify.VacationRentalService.WebAPI.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <None Update="lodgify_vacation.db">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
 
 </Project>
