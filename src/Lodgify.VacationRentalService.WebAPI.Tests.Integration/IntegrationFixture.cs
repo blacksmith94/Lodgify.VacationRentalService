@@ -13,8 +13,8 @@ namespace Lodgify.VacationRentalService.WebAPI.Tests.Integration
     {
         private readonly IHost _host;
         private readonly TestServer _server;
+        private readonly HttpClient _client;
 
-        public HttpClient Client { get; }
         public Request Request { get; }
 
         public IntegrationFixture()
@@ -29,14 +29,14 @@ namespace Lodgify.VacationRentalService.WebAPI.Tests.Integration
 
             _host = hostBuilder.Start();
             _server = _host.GetTestServer();
+            _client = _server.CreateClient();
 
-            Client = _server.CreateClient();
-            Request = new Request(Client);
+            Request = new Request(_client);
         }
 
         public void Dispose()
         {
-            Client.Dispose();
+            _client.Dispose();
             _server.Dispose();
         }
     }
