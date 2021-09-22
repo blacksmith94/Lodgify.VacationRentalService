@@ -11,16 +11,14 @@ namespace Lodgify.VacationRentalService.WebAPI.Tests.Integration
     [CollectionDefinition("Integration")]
     public sealed class IntegrationFixture : IDisposable, ICollectionFixture<IntegrationFixture>
     {
-        private readonly IHost Host;
+        private readonly IHost _host;
         private readonly TestServer _server;
-
 
         public HttpClient Client { get; }
         public Request Request { get; }
 
         public IntegrationFixture()
         {
-            Environment.SetEnvironmentVariable("ASPNETCORE_ENVIRONMENT", "Test");
             var hostBuilder = new HostBuilder()
                         .ConfigureWebHost(webHost =>
                         {
@@ -29,8 +27,9 @@ namespace Lodgify.VacationRentalService.WebAPI.Tests.Integration
                         })
                         .UseServiceProviderFactory(new AutofacServiceProviderFactory());
 
-            Host = hostBuilder.Start();
-            _server = Host.GetTestServer();
+            _host = hostBuilder.Start();
+            _server = _host.GetTestServer();
+
             Client = _server.CreateClient();
             Request = new Request(Client);
         }
