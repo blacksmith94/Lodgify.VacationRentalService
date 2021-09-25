@@ -1,4 +1,5 @@
 ﻿using Lodgify.VacationRentalService.WebAPI.DTOs;
+using System.Net;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -27,6 +28,19 @@ namespace Lodgify.VacationRentalService.WebAPI.Tests.Integration
             RentalResponseDTO rentalResponse = await _request.Get<RentalResponseDTO>($"rentals/{resourceIdResponse.Id}");
             Assert.Equal(request.Units, rentalResponse.Units);
             Assert.Equal(request.PreparationTimeInDays, rentalResponse.PreparationTimeInDays);
+        }
+
+        [Fact]
+        public async Task Should_Return_Bad_Request_On_Negative_Units()
+        {
+            var request = new RentalRequestDTO
+            {
+                Units = -1,
+                PreparationTimeInDays = 1
+            };
+
+            var response = await _request.Post("rentals", request);
+            Assert.True(response.StatusCode == HttpStatusCode.BadRequest);
         }
     }
 }

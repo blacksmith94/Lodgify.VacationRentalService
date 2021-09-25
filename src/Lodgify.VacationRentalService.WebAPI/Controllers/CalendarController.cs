@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using FluentValidation;
 using Lodgify.VacationRentalService.Domain.Models;
 using Lodgify.VacationRentalService.Domain.Services;
 using Lodgify.VacationRentalService.WebAPI.DTOs;
@@ -17,17 +16,14 @@ namespace Lodgify.VacationRentalService.Api.Controllers
 
 		private readonly IMapper mapper;
 		private readonly ILogger<CalendarController> logger;
-		private readonly IValidator<CalendarRequestDTO> calendarRequestValidator;
 
 		public CalendarController(ICalendarService calendarService,
 								  IMapper mapper,
-								  ILogger<CalendarController> logger,
-								  IValidator<CalendarRequestDTO> calendarRequestValidator)
+								  ILogger<CalendarController> logger)
 		{
 			this.calendarService = calendarService;
 			this.mapper = mapper;
 			this.logger = logger;
-			this.calendarRequestValidator = calendarRequestValidator;
 		}
 
 		[HttpGet]
@@ -36,11 +32,6 @@ namespace Lodgify.VacationRentalService.Api.Controllers
 		[ProducesResponseType((int)HttpStatusCode.NotFound)]
 		public ActionResult<CalendarResponse> Get([FromQuery] CalendarRequestDTO calendarRequest)
 		{
-			//Validate Request
-			var requestValidation = calendarRequestValidator.Validate(calendarRequest);
-			if (!requestValidation.IsValid)
-				return BadRequest(requestValidation);
-			
 			//Map model
 			var model = mapper.Map<CalendarRequestDTO, CalendarRequest>(calendarRequest);
 		

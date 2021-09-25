@@ -42,7 +42,7 @@ namespace Lodgify.VacationRentalService.WebAPI
 			var serviceConfiguration = configuration.GetSection("VacationRentalServiceConfiguration").Get<VacationRentalServiceConfiguration>();
 			services.AddSingleton(serviceConfiguration);
 			services.AddMvc()
-					.AddFluentValidation()
+					.AddFluentValidation(mvcConfig => mvcConfig.RegisterValidatorsFromAssemblyContaining<Startup>())
 					.AddNewtonsoftJson();
 
 			//Add Swagger documentation, this will let the developers see the API documentation in an intertactive web application

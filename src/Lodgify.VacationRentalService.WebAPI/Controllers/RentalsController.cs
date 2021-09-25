@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using FluentValidation;
 using Lodgify.VacationRentalService.Domain.Models;
 using Lodgify.VacationRentalService.Domain.Services;
 using Lodgify.VacationRentalService.WebAPI.DTOs;
@@ -19,21 +18,18 @@ namespace Lodgify.VacationRentalService.Api.Controllers
 
         private readonly IMapper mapper;
         private readonly ILogger<RentalsController> logger;
-        private readonly IValidator<RentalRequestDTO> rentalRequestValidator;
 
 
 
         public RentalsController(IRentalService rentalService,
                                  IRentalBookingService rentalBookingService,
                                  IMapper mapper,
-                                 ILogger<RentalsController> logger,
-                                 IValidator<RentalRequestDTO> rentalRequestValidator)
+                                 ILogger<RentalsController> logger)
         {
             this.rentalService = rentalService;
             this.mapper = mapper;
             this.logger = logger;
             this.rentalBookingService = rentalBookingService;
-            this.rentalRequestValidator = rentalRequestValidator;
         }
 
         [HttpGet("{rentalId:int}")]
@@ -57,11 +53,6 @@ namespace Lodgify.VacationRentalService.Api.Controllers
         [ProducesResponseType((int)HttpStatusCode.BadRequest)]
         public async Task<ActionResult<ResourceIdDTO>> Post(RentalRequestDTO rentalRequest)
         {
-            //Validate Request
-            var requestValidation = rentalRequestValidator.Validate(rentalRequest);
-            if (!requestValidation.IsValid)
-                return BadRequest(requestValidation);
-            
             //Map model
             var rental = mapper.Map<RentalRequestDTO, Rental>(rentalRequest);
 
@@ -85,11 +76,6 @@ namespace Lodgify.VacationRentalService.Api.Controllers
         [ProducesResponseType((int)HttpStatusCode.Conflict)]
         public ActionResult<ResourceIdDTO> Put(int rentalId, [FromBody]RentalRequestDTO rentalRequest)
         {
-            //Validate Request
-            var requestValidation = rentalRequestValidator.Validate(rentalRequest);
-            if (!requestValidation.IsValid)
-                return BadRequest(requestValidation);
-
             //Map model
             var model = mapper.Map<RentalRequestDTO, Rental>(rentalRequest);
             model.Id = rentalId;

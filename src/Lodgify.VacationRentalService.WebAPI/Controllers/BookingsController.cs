@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using FluentValidation;
 using Lodgify.VacationRentalService.Domain.Models;
 using Lodgify.VacationRentalService.Domain.Services;
 using Lodgify.VacationRentalService.WebAPI.DTOs;
@@ -17,19 +16,16 @@ namespace Lodgify.VacationRentalService.Api.Controllers
 		private readonly IBookingService bookingService;
 		private readonly IRentalBookingService rentalBookingService;
 
-		private readonly IValidator<BookingRequestDTO> bookingRequestValidator;
 		private readonly IMapper mapper;
 		private readonly ILogger<BookingsController> logger;
 
 		public BookingsController(IBookingService bookingService,
 								  IRentalBookingService rentalBookingService,
-								  IValidator<BookingRequestDTO> bookingRequestValidator,
 								  IMapper mapper,
 								  ILogger<BookingsController> logger)
 		{
 			this.bookingService = bookingService;
 			this.rentalBookingService = rentalBookingService;
-			this.bookingRequestValidator = bookingRequestValidator;
 			this.mapper = mapper;
 			this.logger = logger;
 		}
@@ -57,11 +53,6 @@ namespace Lodgify.VacationRentalService.Api.Controllers
 		[ProducesResponseType((int)HttpStatusCode.NotFound)]
 		public async Task<ActionResult<ResourceIdDTO>> Post(BookingRequestDTO bookingRequestDTO)
 		{
-			//Validate Request
-			var requestValidation = bookingRequestValidator.Validate(bookingRequestDTO);
-			if (!requestValidation.IsValid)
-				return BadRequest(requestValidation);
-
 			//Map model
 			var model = mapper.Map<BookingRequestDTO, Booking>(bookingRequestDTO);
 
