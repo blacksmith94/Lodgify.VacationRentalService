@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using Lodgify.VacationRentalService.Domain.Models.Interfaces;
 
 namespace Lodgify.VacationRentalService.Domain.Models
 {
-    public class CalendarBooking
-    {
-        public int Id { get; set; }
+	public class CalendarBooking : IBookingPeriod
+	{
+		public int Id { get; set; }
 
-        public int Unit { get; set; }
-    }
+		public int Unit { get; set; }
+	}
 }

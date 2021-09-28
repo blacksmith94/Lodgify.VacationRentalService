@@ -1,4 +1,6 @@
 ﻿using Lodgify.VacationRentalService.Domain.Models;
+using Lodgify.VacationRentalService.Domain.Models.Interfaces;
+using Lodgify.VacationRentalService.Domain.Services.Interfaces;
 using System.Collections.Generic;
 using System.Net;
 
@@ -36,8 +38,8 @@ namespace Lodgify.VacationRentalService.Domain.Services
 				var calendarDate = new CalendarDate
 				{
 					Date = calendarRequest.Start.Date.AddDays(i),
-					Bookings = new List<CalendarBooking>(),
-					PreparationTimes = new List<CalendarBooking>()
+					Bookings = new List<IBookingPeriod>(),
+					PreparationTimes = new List<IBookingPeriod>()
 				};
 
 				var bookings = bookingService.GetByDateAndId(calendarRequest.RentalId, calendarDate.Date);

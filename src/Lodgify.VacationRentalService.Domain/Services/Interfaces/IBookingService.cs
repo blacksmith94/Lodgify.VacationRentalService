@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Lodgify.VacationRentalService.Domain.Services
+namespace Lodgify.VacationRentalService.Domain.Services.Interfaces
 {
 	public interface IBookingService
 	{

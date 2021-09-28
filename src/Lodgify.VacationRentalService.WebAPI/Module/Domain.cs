@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using Lodgify.VacationRentalService.Domain.Services;
+using Lodgify.VacationRentalService.Domain.Services.Interfaces;
 
 namespace Lodgify.VacationRentalService.WebAPI.Module
 {

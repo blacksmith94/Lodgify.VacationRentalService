@@ -1,4 +1,5 @@
 ﻿using Lodgify.VacationRentalService.Domain.Models;
+using Lodgify.VacationRentalService.Domain.Services.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;

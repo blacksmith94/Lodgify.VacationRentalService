@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Lodgify.VacationRentalService.Domain.Models.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace Lodgify.VacationRentalService.Domain.Models
@@ -7,8 +8,8 @@ namespace Lodgify.VacationRentalService.Domain.Models
     {
         public DateTime Date { get; set; }
 
-        public List<CalendarBooking> Bookings { get; set; }
+        public List<IBookingPeriod> Bookings { get; set; }
 
-        public List<CalendarBooking> PreparationTimes { get; set; }
+        public List<IBookingPeriod> PreparationTimes { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using Lodgify.VacationRentalService.Domain.Models;
-using Lodgify.VacationRentalService.Domain.Services;
+using Lodgify.VacationRentalService.Domain.Services.Interfaces;
 using Lodgify.VacationRentalService.WebAPI.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
