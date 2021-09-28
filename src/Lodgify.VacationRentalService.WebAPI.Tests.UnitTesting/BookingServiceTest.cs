@@ -38,7 +38,7 @@ namespace Lodgify.VacationRentalService.WebAPI.Tests.UnitTesting
 				IsPreparationTime = false
 			};
 
-			var result = await bookingService.AddAsync(bookingModel,3,2 );
+			var result = await bookingService.AddAsync(bookingModel, 3, 2);
 
 			Assert.Equal(bookingModel.RentalId, result.RentalId);
 			Assert.Equal(bookingModel.Start, result.Start);

@@ -36,7 +36,7 @@ namespace Lodgify.VacationRentalService.Api.Controllers
 		public ActionResult<BookingResponseDTO> Get(int bookingId)
 		{
 			var model = bookingService.GetById(bookingId);
-			if (model== null)
+			if (model == null)
 			{
 				return NotFound("Booking not found");
 			}

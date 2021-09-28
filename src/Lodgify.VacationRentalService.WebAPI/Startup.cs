@@ -39,7 +39,7 @@ namespace Lodgify.VacationRentalService.WebAPI
 		/// <param name="services"> IServiceCollection used for the registration of services </param>
 		public void ConfigureServices(IServiceCollection services)
 		{
-			var serviceConfiguration = configuration.GetSection("VacationRentalServiceConfiguration").Get<VacationRentalServiceConfiguration>();
+			var serviceConfiguration = configuration.GetSection("VacationRentalServiceConfiguration").Get<ServiceConfiguration>();
 			services.AddSingleton(serviceConfiguration);
 			services.AddMvc()
 					.AddFluentValidation(mvcConfig => mvcConfig.RegisterValidatorsFromAssemblyContaining<Startup>())

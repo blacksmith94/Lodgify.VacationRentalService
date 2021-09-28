@@ -20,7 +20,7 @@ namespace Lodgify.VacationRentalService.Domain.Services
 		/// <param name="bookingService">Injected Booking service </param>
 		/// <param name="rentalService">Injected Rental service </param>
 		public RentalBookingService(IBookingService bookingService,
-								  IRentalService rentalService)
+									IRentalService rentalService)
 		{
 			this.bookingService = bookingService;
 			this.rentalService = rentalService;
@@ -29,7 +29,7 @@ namespace Lodgify.VacationRentalService.Domain.Services
 		public async Task<Booking> AddBooking(Booking bookingToAdd)
 		{
 			var rental = rentalService.GetById(bookingToAdd.RentalId);
-			if(rental == null) throw new HttpException(HttpStatusCode.NotFound, "Rental not found");
+			if (rental == null) throw new HttpException(HttpStatusCode.NotFound, "Rental not found");
 			return await bookingService.AddAsync(bookingToAdd, rental.Units, rental.PreparationTimeInDays);
 		}
 
@@ -37,7 +37,7 @@ namespace Lodgify.VacationRentalService.Domain.Services
 		{
 			var rentalToUpdate = rentalService.GetById(newRental.Id);
 
-			if (rentalToUpdate == null) throw new HttpException(HttpStatusCode.NotFound,"Rental not found");
+			if (rentalToUpdate == null) throw new HttpException(HttpStatusCode.NotFound, "Rental not found");
 
 			if (newRental.Units < rentalToUpdate.Units)
 			{

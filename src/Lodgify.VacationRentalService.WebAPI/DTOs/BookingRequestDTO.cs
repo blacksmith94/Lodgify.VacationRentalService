@@ -2,17 +2,17 @@
 
 namespace Lodgify.VacationRentalService.WebAPI.DTOs
 {
-    public class BookingRequestDTO
-    {
-        public int RentalId { get; set; }
+	public class BookingRequestDTO
+	{
+		public int RentalId { get; set; }
 
-        public DateTime Start
-        {
-            get => _startIgnoreTime;
-            set => _startIgnoreTime = value.Date;
-        }
+		public DateTime Start
+		{
+			get => _startIgnoreTime;
+			set => _startIgnoreTime = value.Date;
+		}
 
-        private DateTime _startIgnoreTime;
-        public int Nights { get; set; }
-    }
+		private DateTime _startIgnoreTime;
+		public int Nights { get; set; }
+	}
 }

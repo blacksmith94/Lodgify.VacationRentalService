@@ -38,13 +38,13 @@ namespace Lodgify.VacationRentalService.Domain.Services
 		/// <returns>A Task with with the added model</returns>
 		public async Task<Booking> AddAsync(Booking bookingToAdd, int rentalUnits, int rentalPrepTime)
 		{
+			//Get booked units during that date
 			var bookings = GetBookingsByDateRange(bookingToAdd.RentalId, bookingToAdd.Start, bookingToAdd.Nights);
-
 			var bookedUnits = bookings.Select(booking => booking.Unit).Distinct();
 
+			//Check if there are available units
 			var bookingUnit = 0;
 			var unit = 1;
-
 			while (bookingUnit == 0 && unit <= rentalUnits)
 			{
 				if (!bookedUnits.Contains(unit))

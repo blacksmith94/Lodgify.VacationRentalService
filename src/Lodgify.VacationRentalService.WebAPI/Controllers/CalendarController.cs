@@ -34,7 +34,7 @@ namespace Lodgify.VacationRentalService.Api.Controllers
 		{
 			//Map model
 			var model = mapper.Map<CalendarRequestDTO, CalendarRequest>(calendarRequest);
-		
+
 			var calendar = calendarService.Get(model);
 
 			var calendarResponse = mapper.Map<Calendar, CalendarResponse>(calendar);

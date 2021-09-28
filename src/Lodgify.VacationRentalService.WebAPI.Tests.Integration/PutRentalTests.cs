@@ -28,7 +28,7 @@ namespace Lodgify.VacationRentalService.WebAPI.Tests.Integration
 			ResourceIdDTO postResult = await _request.Post<RentalRequestDTO, ResourceIdDTO>("rentals", request);
 
 			//Get added rental
-			RentalResponseDTO getResult =  await _request.Get<RentalResponseDTO>($"rentals/{postResult.Id}"); ;
+			RentalResponseDTO getResult = await _request.Get<RentalResponseDTO>($"rentals/{postResult.Id}"); ;
 			Assert.Equal(request.Units, getResult.Units);
 			Assert.Equal(request.PreparationTimeInDays, getResult.PreparationTimeInDays);
 

@@ -14,7 +14,7 @@ namespace Lodgify.VacationRentalService.Domain.Services
 		/// <summary>
 		/// Rental Service constructor.
 		/// </summary>
-		/// <param name="repository">Injected the repository for the Booking table </param>
+		/// <param name="repository">Injected the repository for the Rental table </param>
 		public RentalService(IRepository<Rental> repository)
 		{
 			this.repository = repository;

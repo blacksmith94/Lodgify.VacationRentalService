@@ -33,7 +33,7 @@ namespace Lodgify.VacationRentalService.WebAPI.Tests.UnitTesting
 				Units = 1,
 				PreparationTimeInDays = 2
 			};
-			
+
 			var result = await rentalService.AddAsync(rentalModel);
 
 			Assert.Equal(rentalModel.PreparationTimeInDays, result.PreparationTimeInDays);

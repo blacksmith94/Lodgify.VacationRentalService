@@ -9,7 +9,7 @@ namespace Lodgify.VacationRentalService.Domain.Services
 	/// </summary>
 	public class CalendarService : ICalendarService
 	{
-		
+
 		private readonly IBookingService bookingService;
 		private readonly IRentalService rentalService;
 

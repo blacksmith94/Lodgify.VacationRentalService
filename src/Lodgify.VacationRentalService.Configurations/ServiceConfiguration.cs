@@ -3,7 +3,7 @@
 	/// <summary>
 	/// Lodgify VacationRentalService configuration
 	/// </summary>
-	public class VacationRentalServiceConfiguration
+	public class ServiceConfiguration
 	{
 		/// <summary>
 		/// Database connection string
