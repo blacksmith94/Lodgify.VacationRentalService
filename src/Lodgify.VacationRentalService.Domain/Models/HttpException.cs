@@ -12,7 +12,6 @@ namespace Lodgify.VacationRentalService.Domain.Models
             this.StatusCode = statusCode;
         }
 
-
         public HttpException(HttpStatusCode statusCode, string message) : base(message)
         {
             this.StatusCode = statusCode;

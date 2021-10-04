@@ -12,7 +12,7 @@ namespace Lodgify.VacationRentalService.Domain.Services.Interfaces
 
 		public Task<Booking> AddAsync(Booking bookingToAdd, int rentalUnits, int rentalPrepTime);
 
-		public IQueryable<Booking> GetByDateAndId(int rentalId, DateTime date);
+		public IQueryable<Booking> GetByIdAndDateRange(int rentalId, DateTime date, int nights);
 
 		public IQueryable<Booking> GetBookingsByDateRange(int rentalId, DateTime date, int nights);
 

@@ -97,14 +97,18 @@ namespace Lodgify.VacationRentalService.Domain.Services
 		/// This method will filter the bookings by date and rental Id, will retrieve both Booking and PreparationTimes
 		/// </summary>
 		/// <param name="rentalId"> Id of the rental to filter.</param>
-		/// <param name="date"> Date of the booking.</param>
+		/// <param name="date"> Start Date of the booking.</param>
+		/// <param name="nights"> Nights to spend.</param>
+
 		/// <returns>A queryable collection of bookings that match the filter </returns>
-		public IQueryable<Booking> GetByDateAndId(int rentalId, DateTime date)
+		public IQueryable<Booking> GetByIdAndDateRange(int rentalId, DateTime date, int nights)
 		{
+			var endDate = date.AddDays(nights);
 			return this.bookingRepoitory.Query.Where(
 				booking => booking.RentalId == rentalId
-				&& booking.Start <= date
-				&& booking.Start.AddDays(booking.Nights) > date);
+				&& ((booking.Start <= date && booking.Start.AddDays(booking.Nights) > date)
+				|| (booking.Start < endDate && booking.Start.AddDays(booking.Nights) >= endDate)
+				|| (booking.Start > date && booking.Start.AddDays(booking.Nights) < endDate)));
 		}
 
 		/// <summary>

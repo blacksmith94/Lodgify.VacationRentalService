@@ -2,6 +2,7 @@
 using Lodgify.VacationRentalService.Domain.Models.Interfaces;
 using Lodgify.VacationRentalService.Domain.Services.Interfaces;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net;
 
 namespace Lodgify.VacationRentalService.Domain.Services
@@ -33,6 +34,7 @@ namespace Lodgify.VacationRentalService.Domain.Services
 				Dates = new List<CalendarDate>()
 			};
 
+			var bookings = bookingService.GetByIdAndDateRange(calendarRequest.RentalId, calendarRequest.Start.Date, calendarRequest.Nights).ToList();
 			for (var i = 0; i < calendarRequest.Nights; i++)
 			{
 				var calendarDate = new CalendarDate
@@ -42,7 +44,6 @@ namespace Lodgify.VacationRentalService.Domain.Services
 					PreparationTimes = new List<IBookingPeriod>()
 				};
 
-				var bookings = bookingService.GetByDateAndId(calendarRequest.RentalId, calendarDate.Date);
 				foreach (var booking in bookings)
 				{
 					if (booking.IsPreparationTime)
@@ -59,6 +60,5 @@ namespace Lodgify.VacationRentalService.Domain.Services
 
 			return result;
 		}
-
 	}
 }
