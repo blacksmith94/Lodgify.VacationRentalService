@@ -17,7 +17,7 @@ The API can be served using [Docker](https://docs.docker.com/get-started/overvie
 
 # Clone, Build and Run 
 Clone the project:
-* `git clone https://github.com/blacksmith94/public-money-recruitment-be-test.git`
+* `git clone https://github.com/blacksmith94/Lodgify.VacationRentalService.git`
 
 Execute this command from the root of the project:
 * `docker-compose build`
