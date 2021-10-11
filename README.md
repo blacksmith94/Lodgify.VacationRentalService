@@ -1,4 +1,4 @@
-# Lodgify Booking Service
+# Lodgify Vacation Rental Service
 This repository is a technical test for Lodgify.
 
 Please take a look at the original test README to see the requested functionality: https://github.com/lodgify/public-money-recruitment-be-test
