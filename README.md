@@ -3,7 +3,7 @@ This repository is a technical test for Lodgify.
 
 Please take a look at the original test README to see the requested functionality: https://github.com/lodgify/public-money-recruitment-be-test
 
-The project is a micro-service RESTful API built in [.NET Core 3.1](https://docs.microsoft.com/es-es/aspnet/core/?view=aspnetcore-3.1) that will let lessors and lessees manage bookings and rentals
+The project is a micro-service RESTful API built in [.NET Core 5.0](https://docs.microsoft.com/es-es/aspnet/core/?view=aspnetcore-5.0) that will let lessors and lessees manage bookings and rentals
 
 Following [Domain Driven Design](https://en.wikipedia.org/wiki/Domain-driven_design) architecture and [SOLID](https://en.wikipedia.org/wiki/SOLID) principles.
 
