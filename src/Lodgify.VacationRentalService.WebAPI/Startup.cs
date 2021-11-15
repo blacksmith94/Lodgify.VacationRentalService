@@ -52,13 +52,7 @@ namespace Lodgify.VacationRentalService.WebAPI
 				{
 					Title = "Lodgify Vacation Rental Service",
 					Version = "v1",
-					Description = "This vacation rental service will let lessors and lessees manage bookings and rentals",
-					Contact = new OpenApiContact
-					{
-						Name = "Sergi Ferre Garcia",
-						Email = "sergiferregarcia94@gmail.com",
-						Url = new Uri("https://github.com/blacksmith94/Lodgify.VacationRentalService"),
-					},
+					Description = "This vacation rental service will let lessors and lessees manage bookings and rentals"
 				});
 			});
 

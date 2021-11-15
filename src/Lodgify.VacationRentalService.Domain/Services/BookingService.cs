@@ -120,11 +120,11 @@ namespace Lodgify.VacationRentalService.Domain.Services
 		/// <returns>True/False </returns>
 		public bool IsBookedByRentalUnitAndDate(int rentalId, int unit, DateTime date)
 		{
-			return this.bookingRepoitory.Query.Where(booking =>
+			return this.bookingRepoitory.Query.Any(booking =>
 				booking.RentalId == rentalId
 				&& booking.Unit == unit
-				&& (booking.Start > date || booking.Start <= date && booking.Start.AddDays(booking.Nights) > date))
-				.Count() > 0;
+				&& booking.Start <= date
+				&& booking.Start.AddDays(booking.Nights) > date);
 		}
 
 		/// <summary>
